@@ -1,6 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 require('dotenv').config()
 
 const app = express()
@@ -28,7 +28,9 @@ async function run() {
         await client.connect();
 
         const jobCollection = client.db('jobDB').collection('jobs')
+        const applyCollection = client.db('jobDB').collection('applyJob')
 
+        // post data from clint side to server side
         app.post('/api/v1/jobs', async (req, res) => {
             const newJob = req.body;
             // console.log(newJob)
@@ -37,11 +39,52 @@ async function run() {
             res.send(result)
         })
 
+        // get data from clint side
         app.get('/api/v1/jobs', async (req, res) => {
             const cursor = jobCollection.find();
             const result = await cursor.toArray();
             res.send(result);
         })
+
+
+        // single data for details page
+        app.get('/api/v1/jobs/:id', async (req, res) => {
+            const jobId = req.params.id;
+            // console.log(jobId)
+            const query = { _id: new ObjectId(jobId) }
+            const cursor = jobCollection.findOne(query);
+            const result = await cursor;
+
+            if (result) {
+                console.log(result)
+                res.send(result);
+            } else {
+                res.status(404).send('Job not found');
+            }
+        });
+
+        // post apply jobs information  data from clint side to server side
+
+        app.post('/api/v1/jobs/apply', async (req, res) => {
+            // const email = req.query.email;
+            const user = req.body
+            console.log(user);
+
+            try {
+                const result = await applyCollection.insertOne({ user });
+                console.log(result);
+
+                // Respond with a success message
+                res.status(201).json({ message: 'Job application posted successfully' });
+            } catch (error) {
+                console.error(error);
+
+                // Respond with an error message
+                res.status(500).json({ message: 'Error posting job application' });
+            }
+        });
+
+
 
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
