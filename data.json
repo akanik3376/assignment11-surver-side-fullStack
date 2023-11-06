@@ -1,0 +1,122 @@
+[
+    {
+        "email": "employer1@example.com",
+        "job_title": "Web Developer",
+        "deadline": "2023-12-31",
+        "description": "We are looking for a skilled web developer to join our team.",
+        "category": "Web Development",
+        "min_price": 50000,
+        "max_price": 75000,
+        "photo": "web_developer.jpg"
+    },
+    {
+        "email": "employer2@example.com",
+        "job_title": "Digital Marketing Specialist",
+        "deadline": "2023-11-30",
+        "description": "Join our marketing team and help us reach new heights.",
+        "category": "Digital Marketing",
+        "min_price": 45000,
+        "max_price": 65000,
+        "photo": "digital_marketing.jpg"
+    },
+    {
+        "email": "employer3@example.com",
+        "job_title": "Graphics Designer",
+        "deadline": "2023-12-15",
+        "description": "Create stunning visuals and designs for our projects.",
+        "category": "Graphics Design",
+        "min_price": 40000,
+        "max_price": 60000,
+        "photo": "graphics_designer.jpg"
+    },
+    {
+        "email": "employer4@example.com",
+        "job_title": "Web Developer Intern",
+        "deadline": "2024-01-15",
+        "description": "Internship opportunity for web development enthusiasts.",
+        "category": "Web Development",
+        "min_price": 25000,
+        "max_price": 35000,
+        "photo": "web_developer_intern.jpg"
+    },
+    {
+        "email": "employer5@example.com",
+        "job_title": "Digital Marketing Manager",
+        "deadline": "2024-02-28",
+        "description": "Lead our digital marketing efforts and grow our online presence.",
+        "category": "Digital Marketing",
+        "min_price": 60000,
+        "max_price": 90000,
+        "photo": "digital_marketing_manager.jpg"
+    },
+    {
+        "email": "employer6@example.com",
+        "job_title": "Graphics Design Intern",
+        "deadline": "2024-03-15",
+        "description": "Internship opportunity for budding graphic designers.",
+        "category": "Graphics Design",
+        "min_price": 20000,
+        "max_price": 30000,
+        "photo": "graphics_design_intern.jpg"
+    },
+    {
+        "email": "employer7@example.com",
+        "job_title": "Front-End Developer",
+        "deadline": "2024-04-30",
+        "description": "Join our team to work on front-end development projects.",
+        "category": "Web Development",
+        "min_price": 55000,
+        "max_price": 80000,
+        "photo": "front_end_developer.jpg"
+    },
+    {
+        "email": "employer8@example.com",
+        "job_title": "SEO Specialist",
+        "deadline": "2023-11-15",
+        "description": "Optimize websites for search engines and improve rankings.",
+        "category": "Digital Marketing",
+        "min_price": 40000,
+        "max_price": 60000,
+        "photo": "seo_specialist.jpg"
+    },
+    {
+        "email": "employer9@example.com",
+        "job_title": "UI/UX Designer",
+        "deadline": "2024-05-31",
+        "description": "Create intuitive and visually appealing user interfaces.",
+        "category": "Graphics Design",
+        "min_price": 60000,
+        "max_price": 90000,
+        "photo": "ui_ux_designer.jpg"
+    },
+    {
+        "email": "employer10@example.com",
+        "job_title": "Back-End Developer",
+        "deadline": "2024-06-15",
+        "description": "Work on the server-side of web applications and systems.",
+        "category": "Web Development",
+        "min_price": 55000,
+        "max_price": 80000,
+        "photo": "backend_developer.jpg"
+    },
+    {
+        "email": "employer11@example.com",
+        "job_title": "Social Media Marketer",
+        "deadline": "2023-12-10",
+        "description": "Manage social media channels and engage with the audience.",
+        "category": "Digital Marketing",
+        "min_price": 35000,
+        "max_price": 55000,
+        "photo": "social_media_marketer.jpg"
+    },
+    {
+        "email": "employer12@example.com",
+        "job_title": "Print Graphic Designer",
+        "deadline": "2024-07-30",
+        "description": "Create designs for print materials like brochures and posters.",
+        "category": "Graphics Design",
+        "min_price": 50000,
+        "max_price": 75000,
+        "photo": "print_graphic_designer.jpg"
+    }
+]
