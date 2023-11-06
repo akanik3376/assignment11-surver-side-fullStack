@@ -63,27 +63,37 @@ async function run() {
             }
         });
 
-        // post apply jobs information  data from clint side to server side
 
-        app.post('/api/v1/jobs/apply', async (req, res) => {
-            // const email = req.query.email;
+        // post apply jobs information  data from clint side to server side
+        app.post('/api/v1/jobs/apply/user/request', async (req, res) => {
+
             const user = req.body
-            console.log(user);
 
             try {
-                const result = await applyCollection.insertOne({ user });
-                console.log(result);
-
-                // Respond with a success message
-                res.status(201).json({ message: 'Job application posted successfully' });
+                const result = await applyCollection.insertOne(user);
+                console.log(user)
+                res.send(result);
             } catch (error) {
                 console.error(error);
 
-                // Respond with an error message
-                res.status(500).json({ message: 'Error posting job application' });
             }
         });
 
+
+        // get apply jobs information  data from clint side to server side
+        app.get('/api/v1/jobs/apply/user/request', async (req, res) => {
+            let query = {}
+            // console.log(query)
+            if (req.query?.email) {
+                query = { email: req.query?.email }
+
+            }
+            // console.log(query)
+            const result = await applyCollection.find(query).toArray();
+
+            res.send(result)
+
+        })
 
 
         // Send a ping to confirm a successful connection
