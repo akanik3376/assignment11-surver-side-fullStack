@@ -35,7 +35,7 @@ async function run() {
             const newJob = req.body;
             // console.log(newJob)
             const result = await jobCollection.insertOne(newJob);
-            console.log(result)
+            // console.log(result)
             res.send(result)
         })
 
@@ -45,6 +45,44 @@ async function run() {
             const result = await cursor.toArray();
             res.send(result);
         })
+
+        // delete data who post this job
+        app.delete('/api/v1/jobs/:id', async (req, res) => {
+            const jobId = req.params.id;
+            console.log(jobId)
+            const query = { _id: new ObjectId(jobId) }
+            console.log(query)
+            const cursor = jobCollection.deleteOne(query);
+            const result = await cursor;
+
+            if (result) {
+                console.log(result)
+                res.send(result);
+            } else {
+                res.status(404).send('Job not found');
+            }
+        });
+
+        // update job 
+        app.put("/api/v1/jobs/:id", async (req, res) => {
+            const id = req.params.id;
+            const filter = { _id: new ObjectId(id) };
+            const options = { upsert: true };
+            const updateJob = req.body;
+            const updateConditions = {
+                $set: {
+                    job_title: updateJob.job_title,
+                    max_price: updateJob.max_price,
+                    min_price: updateJob.min_price,
+                    deadline: updateJob.deadline,
+                    description: updateJob.description,
+                    description: updateJob.description,
+                    email: updateJob.email,
+                },
+            };;
+            const result = await jobCollection.updateOne(filter, updateConditions, options);
+            res.send(result);
+        });
 
 
         // single data for details page
@@ -64,6 +102,7 @@ async function run() {
         });
 
 
+        // ##########################################################################
         // post apply jobs information  data from clint side to server side
         app.post('/api/v1/jobs/apply/user/request', async (req, res) => {
 
@@ -94,6 +133,9 @@ async function run() {
             res.send(result)
 
         })
+
+
+
 
 
         // Send a ping to confirm a successful connection
