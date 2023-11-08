@@ -27,7 +27,7 @@ async function run() {
         // Connect the client to the server	(optional starting in v4.7)
         await client.connect();
 
-        const jobCollection = client.db('jobDB').collection('jobs')
+        const jobCollection = client.db('jobDB').collection('postJob')
         const applyCollection = client.db('jobDB').collection('applyJob')
 
         // post data from clint side to server side
@@ -66,9 +66,11 @@ async function run() {
         // update job 
         app.put("/api/v1/jobs/:id", async (req, res) => {
             const id = req.params.id;
+            // console.log(id);
             const filter = { _id: new ObjectId(id) };
             const options = { upsert: true };
             const updateJob = req.body;
+
             const updateConditions = {
                 $set: {
                     job_title: updateJob.job_title,
@@ -76,11 +78,14 @@ async function run() {
                     min_price: updateJob.min_price,
                     deadline: updateJob.deadline,
                     description: updateJob.description,
-                    description: updateJob.description,
                     email: updateJob.email,
                 },
-            };;
+
+            };
+            console.log(updateConditions)
+
             const result = await jobCollection.updateOne(filter, updateConditions, options);
+            console.log(result);
             res.send(result);
         });
 
